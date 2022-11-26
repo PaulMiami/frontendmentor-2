@@ -1,58 +1,116 @@
 import type React from "react";
 import Image from "next/image";
-import styles from "./page.module.css";
+
+import clsx from "clsx";
+
+import backgoundImageDesktop from "@images/bg-header-desktop.svg";
+import backgoundImageMobile from "@images/bg-header-mobile.svg";
+
+import posts from "../app/data/posts.json";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js 13!</a>
-        </h1>
+    <>
+      <main className="container mx-auto">
+        <section id="header" className="bg-desaturatedDarkCyan">
+          <div className="flex justify-center mx-auto">
+            {/* header */}
+            <div className="xl:hidden">
+              <Image src={backgoundImageMobile} alt="header"></Image>
+            </div>
+            <div className="hidden xl:block">
+              <Image src={backgoundImageDesktop} alt="header"></Image>
+            </div>
+          </div>
+        </section>
+        <section id="posts" className="bg-lightGrayishCyan">
+          <div className="flex flex-col justify-center mx-5 xl:py-14 py-14">
+            {posts.map((p) => (
+              <div
+                key={p.id}
+                className="flex flex-1 bg-white rounded-md mt-10 first:mt-0 shadow-xl shadow-darkGrayishCyan"
+              >
+                <div className={clsx("flex", !p.featured && "hidden")}>
+                  <div className="w-1 rounded-l-xl bg-desaturatedDarkCyan"></div>
+                </div>
+                <div className="flex flex-1 flex-col xl:flex-row">
+                  <div className="flex flex-col xl:flex-row xl:my-6">
+                    <Image
+                      src={p.logo}
+                      alt="photosnap"
+                      height={80}
+                      width={80}
+                      className="h-20 w-20 -mt-6 ml-5 xl:my-0 hidden xl:block"
+                    />
+                    <Image
+                      src={p.logo}
+                      alt="photosnap"
+                      height={48}
+                      width={48}
+                      className="h-12 w-12 -mt-6 ml-5 xl:hidden"
+                    />
+                    <div className="flex flex-col ml-4 mt-1">
+                      <div className="flex items-center">
+                        <div className=" text-desaturatedDarkCyan font-bold">
+                          {p.company}
+                        </div>
+                        {p.new && (
+                          <div className="flex text-white bg-desaturatedDarkCyan rounded-2xl px-2 py-0 pt-1 ml-6">
+                            NEW!
+                          </div>
+                        )}
+                        {p.featured && (
+                          <div className="flex text-white bg-black rounded-2xl px-2 py-0 pt-1 ml-3">
+                            FEATURED
+                          </div>
+                        )}
+                      </div>
+                      <div className="font-bold mt-2 xl:text-xl">
+                        {p.position}
+                      </div>
+                      <div className="flex flex-row items-center space-x-3 text-darkGrayishCyan mt-2">
+                        <div>{p.postedAt}</div>
+                        <div className="bg-darkGrayishCyan rounded-full h-1 w-1"></div>
+                        <div>{p.contract}</div>
+                        <div className="bg-darkGrayishCyan rounded-full h-1 w-1"></div>
+                        <div>{p.location}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr className="flex-grow border-t-2 bg-darkGrayishCyan  m-4 xl:hidden" />
+                  <div className="flex flex-1 flex-wrap xl:items-center xl:justify-end  ml-2 mb-4">
+                    <div>
+                      <div className="m-1 mr-3 p-2 px-3 bg-lightGrayishCyan text-desaturatedDarkCyan font-bold rounded-md">
+                        {p.role}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="m-1 mr-3 p-2 px-3 bg-lightGrayishCyan text-desaturatedDarkCyan font-bold rounded-md">
+                        {p.level}
+                      </div>
+                    </div>
 
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://beta.nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js 13</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Explore the Next.js 13 playground.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates/next.js/app-directory?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>Deploy your Next.js site to a public URL with Vercel.</p>
-          </a>
-        </div>
+                    {p.languages.map((l) => (
+                      <div key={l}>
+                        <div className="m-1 mr-3 p-2 px-3 bg-lightGrayishCyan text-desaturatedDarkCyan font-bold rounded-md">
+                          {l}
+                        </div>
+                      </div>
+                    ))}
+                    {p.tools.map((t) => (
+                      <div key={t}>
+                        <div className="m-1 mr-3 p-2 px-3 bg-lightGrayishCyan text-desaturatedDarkCyan font-bold rounded-md">
+                          {t}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
-    </div>
+    </>
   );
 }
