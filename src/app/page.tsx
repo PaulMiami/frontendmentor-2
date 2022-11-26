@@ -5,8 +5,9 @@ import clsx from "clsx";
 
 import backgoundImageDesktop from "@images/bg-header-desktop.svg";
 import backgoundImageMobile from "@images/bg-header-mobile.svg";
+import Tag from "@ui/Tag";
 
-import posts from "../app/data/posts.json";
+import posts from "../data/posts.json";
 
 export default function Home() {
   return (
@@ -37,14 +38,14 @@ export default function Home() {
                   <div className="flex flex-col xl:flex-row xl:my-6">
                     <Image
                       src={p.logo}
-                      alt="photosnap"
+                      alt={p.company}
                       height={80}
                       width={80}
                       className="h-20 w-20 -mt-6 ml-5 xl:my-0 hidden xl:block"
                     />
                     <Image
                       src={p.logo}
-                      alt="photosnap"
+                      alt={p.company}
                       height={48}
                       width={48}
                       className="h-12 w-12 -mt-6 ml-5 xl:hidden"
@@ -65,7 +66,7 @@ export default function Home() {
                           </div>
                         )}
                       </div>
-                      <div className="font-bold mt-2 xl:text-xl">
+                      <div className="font-bold mt-2 xl:text-xl hover:text-desaturatedDarkCyan cursor-pointer">
                         {p.position}
                       </div>
                       <div className="flex flex-row items-center space-x-3 text-darkGrayishCyan mt-2">
@@ -79,30 +80,13 @@ export default function Home() {
                   </div>
                   <hr className="flex-grow border-t-2 bg-darkGrayishCyan  m-4 xl:hidden" />
                   <div className="flex flex-1 flex-wrap xl:items-center xl:justify-end  ml-2 mb-4">
-                    <div>
-                      <div className="m-1 mr-3 p-2 px-3 bg-lightGrayishCyan text-desaturatedDarkCyan font-bold rounded-md">
-                        {p.role}
-                      </div>
-                    </div>
-                    <div>
-                      <div className="m-1 mr-3 p-2 px-3 bg-lightGrayishCyan text-desaturatedDarkCyan font-bold rounded-md">
-                        {p.level}
-                      </div>
-                    </div>
-
+                    <Tag name={p.role} />
+                    <Tag name={p.level} />
                     {p.languages.map((l) => (
-                      <div key={l}>
-                        <div className="m-1 mr-3 p-2 px-3 bg-lightGrayishCyan text-desaturatedDarkCyan font-bold rounded-md">
-                          {l}
-                        </div>
-                      </div>
+                      <Tag key={l} name={l} />
                     ))}
                     {p.tools.map((t) => (
-                      <div key={t}>
-                        <div className="m-1 mr-3 p-2 px-3 bg-lightGrayishCyan text-desaturatedDarkCyan font-bold rounded-md">
-                          {t}
-                        </div>
-                      </div>
+                      <Tag key={t} name={t} />
                     ))}
                   </div>
                 </div>
