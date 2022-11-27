@@ -38,7 +38,7 @@ export default function Post({ post }: Props) {
                 <img
                   src={post.logo}
                   alt={post.company}
-                  className="xl:h-20 xl:w-20 h-12 w-12 -mt-6 ml-5 xl:my-0 xl:block xl:translate-y-0 -translate-y-1/2"
+                  className="xl:h-20 xl:w-20 h-12 w-12 ml-5 xl:my-0 xl:block xl:translate-y-0 -translate-y-1/2"
                 />
                 <div className="flex flex-col ml-4 mt-1">
                   <div className="flex items-center">
