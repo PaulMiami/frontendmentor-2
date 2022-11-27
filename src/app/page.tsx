@@ -18,7 +18,7 @@ export default function Home() {
           <AnimateSharedLayout>
             <FilterContextProvider>
               <Filter />
-              <div className="flex flex-col justify-center mx-5 pt-8">
+              <div className="flex flex-col justify-center mx-5 xl:mx-36 pt-12 xl:pt-16">
                 {posts.map((p) => (
                   <Post key={p.id} post={p} />
                 ))}
