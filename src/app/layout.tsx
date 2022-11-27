@@ -22,7 +22,11 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body className={`${leagueSpartan.variable} font-sans`}>{children}</body>
+      <body
+        className={`${leagueSpartan.variable} font-sans bg-lightGrayishCyan pb-8`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
