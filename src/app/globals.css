@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#header {
+    background-color: hsl(180, 29%, 50%);
+    height:156px;
+    background-image: url("../../public/images/bg-header-mobile.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media  (min-width: 1440px) {
+  
+    #header {
+        background-image: url("../../public/images/bg-header-desktop.svg");
+    }
+}   
