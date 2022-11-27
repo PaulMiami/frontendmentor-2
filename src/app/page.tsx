@@ -1,4 +1,7 @@
+"use client";
+
 import type React from "react";
+import { AnimateSharedLayout } from "framer-motion";
 
 import Post from "@ui/Post";
 
@@ -12,14 +15,16 @@ export default function Home() {
       <main className="mx-auto">
         <section id="header"></section>
         <section id="posts" className="bg-lightGrayishCyan pb-8">
-          <FilterContextProvider>
-            <Filter />
-            <div className="flex flex-col justify-center mx-5 pt-8">
-              {posts.map((p) => (
-                <Post key={p.id} post={p} />
-              ))}
-            </div>
-          </FilterContextProvider>
+          <AnimateSharedLayout>
+            <FilterContextProvider>
+              <Filter />
+              <div className="flex flex-col justify-center mx-5 pt-8">
+                {posts.map((p) => (
+                  <Post key={p.id} post={p} />
+                ))}
+              </div>
+            </FilterContextProvider>
+          </AnimateSharedLayout>
         </section>
       </main>
     </>
