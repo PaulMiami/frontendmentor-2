@@ -35,25 +35,16 @@ export default function Post({ post }: Props) {
             </div>
             <div className="flex flex-1 flex-col xl:flex-row">
               <div className="flex flex-col xl:flex-row xl:my-6">
-                <Image
+                <img
                   src={post.logo}
                   alt={post.company}
-                  height={80}
-                  width={80}
-                  className="h-20 w-20 -mt-6 ml-5 xl:my-0 hidden xl:block"
-                />
-                <Image
-                  src={post.logo}
-                  alt={post.company}
-                  height={48}
-                  width={48}
-                  className="h-12 w-12 -mt-6 ml-5 xl:hidden"
+                  className="xl:h-20 xl:w-20 h-12 w-12 -mt-6 ml-5 xl:my-0 xl:block xl:translate-y-0 -translate-y-1/2"
                 />
                 <div className="flex flex-col ml-4 mt-1">
                   <div className="flex items-center">
-                    <div className=" text-desaturatedDarkCyan font-bold">
+                    <h2 className=" text-desaturatedDarkCyan font-bold">
                       {post.company}
-                    </div>
+                    </h2>
                     {post.new && (
                       <div className="flex text-white bg-desaturatedDarkCyan rounded-2xl px-2 py-0 pt-1 ml-6">
                         NEW!
